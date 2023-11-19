@@ -1,18 +1,23 @@
 export const popupHTMLTemplate = `
 <!DOCTYPE html>
-<html>
+  <html>
   <head>
-    <title>my chrome extension</title>
+    <title>Background Changer</title>
+    <script src="popup.js"></script>
     <link rel="stylesheet" href="popup.css">
   </head>
   <body>
-    <button id="changeColor">Change Background</button>
-    <script src="popup.js"></script>
+    <button id="changeBackground">Switch Background color</button>
   </body>
 </html>`;
 
 export const popupCSSTemplate = `
-#changeColor {
+body {
+  min-width: 400px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+#changeBackground {
     cursor: pointer;
     padding: 15px;
     color: #fff;
@@ -20,26 +25,18 @@ export const popupCSSTemplate = `
     background-color: #1859bb;
     border-radius: 4px;
 }
-#changeColor:hover {
+#changeBackground:hover {
     background-color: #0e397a;
 }
 `;
 
 export const popupJSTemplate = `
-let changeColor = document.getElementById("changeColor");
-changeColor.addEventListener("click", async () => {
-    let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-
-    chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        function: setPageBackgroundColorToLightBlue,
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('changeBackground').addEventListener('click', function() {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
+      chrome.tabs.sendMessage(tabs[0].id, { action: 'changeBackground' });
     });
+  });
 });
-
-// The body of this function will be executed as a content script inside the
-// current page
-function setPageBackgroundColorToLightBlue() {
-    document.body.style.backgroundColor = '#6ab4ec';
-};
 `;
 
