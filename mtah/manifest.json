@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "mtah",
+    "version": "1.0.0",
+    "action": {
+        "default_popup": "./popup/popup.html"
+    },
+    "description": "",
+    "icons": {
+        "16": "./images/extension-default-icon16.png",
+        "32": "./images/extension-default-icon32.png",
+        "48": "./images/extension-default-icon48.png",
+        "128": "./images/extension-default-icon128.png"
+    },
+    "author": "mhiri",
+    "background": {
+        "service_worker": "service-worker.js"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
