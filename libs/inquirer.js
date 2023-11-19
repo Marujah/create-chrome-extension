@@ -26,6 +26,11 @@ const ask = {
         type: 'input',
         message: 'Enter a description for your Extension (optional):',
       },
+      {
+        name: 'extensionAuthor',
+        type: 'input',
+        message: 'Enter your name (optional):',
+      },
     ];
     return inquirer.prompt(questions);
   },

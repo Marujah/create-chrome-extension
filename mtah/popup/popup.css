@@ -1,0 +1,17 @@
+
+body {
+  min-width: 400px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+#changeBackground {
+    cursor: pointer;
+    padding: 15px;
+    color: #fff;
+    border: 1px solid blue;
+    background-color: #1859bb;
+    border-radius: 4px;
+}
+#changeBackground:hover {
+    background-color: #0e397a;
+}

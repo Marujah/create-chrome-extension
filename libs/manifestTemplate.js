@@ -6,8 +6,9 @@ export const generateManifest = (data) => ({
 
     // Recommended
     action: {
-        ...(data.defaultPopup && {default_popup: "./popup/popup.html"}),
+        default_popup: "./popup/popup.html"
     },
+    // Optional
     description: data.extensionDescription || "",
     icons: {
         16: './images/extension-default-icon16.png',
@@ -17,12 +18,16 @@ export const generateManifest = (data) => ({
     },
 
     // Optional
-    author: "",
+    author: data?.extensionAuthor || "",
     background: {
         // Required
-        service_worker: "background.js",
-        // Optional
-        ...(data.backgroundType && {type: data.backgroundType})
+        service_worker: "service-worker.js",
     },
-    permissions: [...new Set(["scripting", ...data.permissions?.split(',').map(i => i.trim())])],
+    permissions: ["activeTab", "scripting"],
+    "content_scripts": [
+        {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+        }
+    ]
 });
