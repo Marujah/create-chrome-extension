@@ -9,7 +9,6 @@
   "files": ["index.js", "libs", "assets"],
   "scripts": {
     "dev": "node index.js",
-    "build": "npx @vercel/ncc build && npx convert-action",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
