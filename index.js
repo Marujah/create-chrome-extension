@@ -20,7 +20,7 @@ clear();
 
 console.log(
   chalk.yellow(
-    figlet.textSync('CCE', {
+    figlet.textSync('CCHEX', {
       horizontalLayout: 'full'
     })
   )

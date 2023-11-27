@@ -9,12 +9,15 @@ This Create Chrome extension (CCHEX) allows users to generate a minimalistic chr
 
 ## Installation
 
-1. npx cchex
+1. npm i -g cchex
+2. cchex
 
-2. Clone or download this repository to your local machine.
-3. Open Google Chrome and go to `chrome://extensions/`.
-4. Enable Developer Mode by toggling the switch in the top right corner.
-5. Click on "Load unpacked" and select the folder containing this extension's files.
+## Installation in chrome browser
+
+1. Clone or download this repository to your local machine.
+2. Open Google Chrome and go to `chrome://extensions/`.
+3. Enable Developer Mode by toggling the switch in the top right corner.
+4. Click on "Load unpacked" and select the folder containing this extension's files.
 
 ## Usage
 
