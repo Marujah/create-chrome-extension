@@ -56,7 +56,7 @@ const run = async () => {
         `${globalPackageDirectory}/cchex/assets/extension-default-icon48.png`,
         `${globalPackageDirectory}/cchex/assets/extension-default-icon128.png`,
       ].map(fileName => {
-        fs.copyFile(fileName, `${directoryName}/images/${fileName.replace('./assets/', '')}`, (err) => {
+        fs.copyFile(fileName, `${directoryName}/images/${fileName.replace(`${globalPackageDirectory}/cchex/assets/`, '')}`, (err) => {
           if (err) throw err;
         });
       })
