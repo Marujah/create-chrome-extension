@@ -37,42 +37,46 @@ const run = async () => {
     //
     var globalPackageDirectory = '';
 
-    commandLine('npm root --global',function(err,data){
+    const cp = commandLine('npm root --global',function(err,data){
         if(err){
             console.log(err);
         }
         globalPackageDirectory = Buffer.from(data).toString('utf8');
+    });
+
+    cp.on('close',function(){
+      //cmd_output is already populated above. If you want just console.log here or leave it
+      // add images folder and copy default icons
+      fs.mkdirSync(directoryName + '/images', {
+        recursive: true,
+      });
+      [
+        `${globalPackageDirectory}/cchex/assets/extension-default-icon16.png`,
+        `${globalPackageDirectory}/cchex/assets/extension-default-icon32.png`,
+        `${globalPackageDirectory}/cchex/assets/extension-default-icon48.png`,
+        `${globalPackageDirectory}/cchex/assets/extension-default-icon128.png`,
+      ].map(fileName => {
+        fs.copyFile(fileName, `${directoryName}/images/${fileName.replace('./assets/', '')}`, (err) => {
+          if (err) throw err;
+        });
+      })
+      try {
+        // add background.js
+        fs.writeFileSync(`${directoryName}/service-worker.js`, serviceWorkerTemplate);
+        fs.writeFileSync(`${directoryName}/content.js`, contentTemplate);
+        fs.mkdirSync(directoryName + '/popup', {
+          recursive: true
+        });
+        fs.writeFileSync(`${directoryName}/popup/popup.html`, popupHTMLTemplate);
+        fs.writeFileSync(`${directoryName}/popup/popup.css`, popupCSSTemplate);
+        fs.writeFileSync(`${directoryName}/popup/popup.js`, popupJSTemplate);
+        // add manifest.json
+        fs.writeFileSync(`${directoryName}/manifest.json`, JSON.stringify(generateManifest(extensionData), null, 4));
+      } catch (error) {
+        console.error(error)
+      }
     })
     
-    // add images folder and copy default icons
-    fs.mkdirSync(directoryName + '/images', {
-      recursive: true,
-    });
-    [
-      `${globalPackageDirectory}/cchex/assets/extension-default-icon16.png`,
-      `${globalPackageDirectory}/cchex/assets/extension-default-icon32.png`,
-      `${globalPackageDirectory}/cchex/assets/extension-default-icon48.png`,
-      `${globalPackageDirectory}/cchex/assets/extension-default-icon128.png`,
-    ].map(fileName => {
-      fs.copyFile(fileName, `${directoryName}/images/${fileName.replace('./assets/', '')}`, (err) => {
-        if (err) throw err;
-      });
-    })
-    try {
-      // add background.js
-      fs.writeFileSync(`${directoryName}/service-worker.js`, serviceWorkerTemplate);
-      fs.writeFileSync(`${directoryName}/content.js`, contentTemplate);
-      fs.mkdirSync(directoryName + '/popup', {
-        recursive: true
-      });
-      fs.writeFileSync(`${directoryName}/popup/popup.html`, popupHTMLTemplate);
-      fs.writeFileSync(`${directoryName}/popup/popup.css`, popupCSSTemplate);
-      fs.writeFileSync(`${directoryName}/popup/popup.js`, popupJSTemplate);
-      // add manifest.json
-      fs.writeFileSync(`${directoryName}/manifest.json`, JSON.stringify(generateManifest(extensionData), null, 4));
-    } catch (error) {
-      console.error(error)
-    }
   } catch (error) {
     chalk.red('error happened!', error);
     process.exit();
