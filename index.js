@@ -15,7 +15,7 @@ import {
 } from './libs/popupTemplate.js';
 import { contentTemplate } from './libs/contentTemplate.js';
 import { updateProgress } from './libs/progressBar.js';
-
+import { commandLine } from './utils/path.js';
 clear();
 
 console.log(
@@ -34,15 +34,25 @@ const run = async () => {
 
     // Start updating the progress bar
     updateProgress();
+    //
+    var globalPackageDirectory = '';
+
+    commandLine('npm root --global',function(err,data){
+        if(err){
+            console.log(err);
+        }
+        globalPackageDirectory = Buffer.from(data).toString('utf8');
+    })
+    
     // add images folder and copy default icons
     fs.mkdirSync(directoryName + '/images', {
       recursive: true,
     });
     [
-      './assets/extension-default-icon16.png',
-      './assets/extension-default-icon32.png',
-      './assets/extension-default-icon48.png',
-      './assets/extension-default-icon128.png',
+      `${globalPackageDirectory}/cchex/assets/extension-default-icon16.png`,
+      `${globalPackageDirectory}/cchex/assets/extension-default-icon32.png`,
+      `${globalPackageDirectory}/cchex/assets/extension-default-icon48.png`,
+      `${globalPackageDirectory}/cchex/assets/extension-default-icon128.png`,
     ].map(fileName => {
       fs.copyFile(fileName, `${directoryName}/images/${fileName.replace('./assets/', '')}`, (err) => {
         if (err) throw err;
