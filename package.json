@@ -1,5 +1,5 @@
 {
-  "name": "create-chrome-extension",
+  "name": "chex",
   "version": "1.0.0",
   "description": "create chrome extension CLI",
   "main": "bin/index.js",
@@ -8,6 +8,7 @@
   },
   "scripts": {
     "dev": "node bin/index.js",
+    "build": "npx @vercel/ncc build && npx convert-action",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

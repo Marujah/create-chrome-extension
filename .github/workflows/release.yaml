@@ -1,57 +1,16 @@
-##
-# Publish new action tag(s) for downstream consumption
-##
 name: Release
-
-# Manual or automatic release
 on:
   workflow_dispatch:
-    inputs:
-      source-branch:
-        description: The branch to where you want to start your release from
-        type: string
-        default: develop
-        required: true
-      target-branch:
-        description: The branch to where you want to merge the changes to
-        type: string
-        default: main
-        required: true
-      release-mode:
-        description: |
-          Choose release mode according to the Semantic Versioning spec (minor|major).
-          Patch is not allowed since is reserved for the hotfix flow.
-        required: true
-        type: string
-        default: minor
-      dry-run:
-        description: | 
-          Dry run, check if you want to skip to push changes to the Git origin. 
-          Useful for testing the pipeline
-        type: boolean
-        default: true
-
-env:
-  BRANCHES_TO_PUSH: "${{ inputs.source-branch }} ${{ inputs.target-branch }}"
-  SOURCE_BRANCH: ${{ inputs.source-branch }}
-  TARGET_BRANCH: ${{ inputs.target-branch }}
-
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
-      # Release with semantic tag like v1.0.3
       - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.release.tag_name }}
-          
-      - name: Setup Node
-        uses: actions/setup-node@v2
-
-      # Compile dist/index.js and bundle with action.yml
-      # Force push major and minor tags, e.g. v1, v1.0
-      # See documentation: https://github.com/JasonEtco/build-and-tag-action
+      - name: Install deps and build
+        run: npm ci && npm run build
       - uses: JasonEtco/build-and-tag-action@v2
         env:
           GITHUB_TOKEN: ${{ github.token }}
