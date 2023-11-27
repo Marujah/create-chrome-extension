@@ -11,6 +11,10 @@ jobs:
           ref: '${{ github.event.release.tag_name }}'
       - name: Install deps
         run: npm ci
+      - name: Set up Git
+		    run: |
+	        git config user.name "Marujah"
+	        git config user.email "marujah@gmail.com"
       - name: Get tag
         id: get_tag
         run: |
