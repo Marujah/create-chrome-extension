@@ -1,14 +1,14 @@
 {
-  "name": "chex",
-  "version": "1.0.0",
-  "description": "create chrome extension CLI",
-  "main": "bin/index.js",
+  "name": "cchex",
+  "version": "0.0.1",
+  "description": "create chrome extension CLI is a tool of creating a boilerplate for a simple chrome extension.",
+  "main": "index.js",
   "bin": {
-    "chex": "./bin/index.js"
+    "cchex": "index.js"
   },
+  "files": ["index.js", "libs", "assets"],
   "scripts": {
-    "dev": "node bin/index.js",
-    "build": "npx @vercel/ncc build && npx convert-action",
+    "dev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,7 +20,11 @@
     "Extension",
     "CLI"
   ],
-  "author": "Marouen Mhiri <mail@marouen-mhiri.com> (http://marouen-mhiri.com/)",
+  "author": {
+    "name": "Marouen Mhiri",
+    "email": "mail@marouen-mhiri.com",
+    "url": "http://marouen-mhiri.com/"
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Marujah/create-chrome-extension/issues"

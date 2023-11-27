@@ -2,19 +2,19 @@
 import chalk from 'chalk';
 import clear from 'clear';
 import figlet from 'figlet';
-import ask from '../libs/inquirer.js';
+import ask from './libs/inquirer.js';
 import fs from 'fs';
 import {
   generateManifest
-} from '../libs/manifestTemplate.js';
+} from './libs/manifestTemplate.js';
 import {
   serviceWorkerTemplate
-} from '../libs/serviceWorkerTemplate.js';
+} from './libs/serviceWorkerTemplate.js';
 import {
   popupHTMLTemplate, popupCSSTemplate, popupJSTemplate,
-} from '../libs/popupTemplate.js';
-import { contentTemplate } from '../libs/contentTemplate.js';
-import { updateProgress } from '../libs/progressBar.js';
+} from './libs/popupTemplate.js';
+import { contentTemplate } from './libs/contentTemplate.js';
+import { updateProgress } from './libs/progressBar.js';
 
 clear();
 
