@@ -1,12 +1,14 @@
 {
-  "name": "create-chrome-extension",
+  "name": "chex",
   "version": "1.0.0",
   "description": "create chrome extension CLI",
   "main": "bin/index.js",
   "bin": {
-    "create-chrome-extension": "./bin/index.js"
+    "chex": "./bin/index.js"
   },
   "scripts": {
+    "dev": "node bin/index.js",
+    "build": "npx @vercel/ncc build && npx convert-action",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -36,6 +38,7 @@
     "inquirer": "^8.2.2",
     "lodash": "^4.17.21",
     "minimist": "^1.2.6",
+    "progress": "^2.0.3",
     "simple-git": "^3.5.0",
     "touch": "^3.1.0",
     "yargs": "^17.4.0"
