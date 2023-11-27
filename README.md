@@ -1,6 +1,6 @@
 # Create Chrome Extension
 
-This Create Chrome extension (CCE) allows users to generate a minimalistic chrome extension. This example extension changes the background color of a webpage by clicking a button in the extension's popup.
+This Create Chrome extension (CHEX) allows users to generate a minimalistic chrome extension. This example extension changes the background color of a webpage by clicking a button in the extension's popup.
 
 ## Features
 
@@ -9,10 +9,12 @@ This Create Chrome extension (CCE) allows users to generate a minimalistic chrom
 
 ## Installation
 
-1. Clone or download this repository to your local machine.
-2. Open Google Chrome and go to `chrome://extensions/`.
-3. Enable Developer Mode by toggling the switch in the top right corner.
-4. Click on "Load unpacked" and select the folder containing this extension's files.
+1. npx chex
+
+2. Clone or download this repository to your local machine.
+3. Open Google Chrome and go to `chrome://extensions/`.
+4. Enable Developer Mode by toggling the switch in the top right corner.
+5. Click on "Load unpacked" and select the folder containing this extension's files.
 
 ## Usage
 

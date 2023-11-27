@@ -4,7 +4,7 @@
   "description": "create chrome extension CLI",
   "main": "bin/index.js",
   "bin": {
-    "create-chrome-extension": "./bin/index.js"
+    "chex": "./bin/index.js"
   },
   "scripts": {
     "dev": "node bin/index.js",
