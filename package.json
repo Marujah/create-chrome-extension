@@ -1,6 +1,6 @@
 {
   "name": "cchex",
-  "version": "2.0.0",
+  "version": "0.0.1",
   "description": "create chrome extension CLI is a tool of creating a boilerplate for a simple chrome extension.",
   "main": "index.js",
   "bin": {

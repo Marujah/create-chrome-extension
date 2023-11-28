@@ -45,7 +45,6 @@ const run = async () => {
     });
 
     cp.on('close',function(){
-      //cmd_output is already populated above. If you want just console.log here or leave it
       // add images folder and copy default icons
       fs.mkdirSync(directoryName + '/images', {
         recursive: true,

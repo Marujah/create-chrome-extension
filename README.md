@@ -14,10 +14,9 @@ This Create Chrome extension (CCHEX) allows users to generate a minimalistic chr
 
 ## Installation in chrome browser
 
-1. Clone or download this repository to your local machine.
 2. Open Google Chrome and go to `chrome://extensions/`.
 3. Enable Developer Mode by toggling the switch in the top right corner.
-4. Click on "Load unpacked" and select the folder containing this extension's files.
+4. Click on "Load unpacked" and select the folder containing the extension's files.
 
 ## Usage
 
@@ -31,7 +30,7 @@ This Create Chrome extension (CCHEX) allows users to generate a minimalistic chr
 - `popup.html`: HTML file for the extension popup.
 - `popup.js`: JavaScript file handling popup functionality.
 - `content.js`: Content script injected into webpages to change the background color.
-- `background.js`: Service worker script for background tasks (unused in this simple example).
+- `service-worker.js`: Service worker script for background tasks (unused in this simple example).
 
 ## Contributing
 
