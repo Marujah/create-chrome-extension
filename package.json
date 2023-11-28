@@ -1,12 +1,12 @@
 {
   "name": "cchex",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "create chrome extension CLI is a tool of creating a boilerplate for a simple chrome extension.",
   "main": "index.js",
   "bin": {
     "cchex": "index.js"
   },
-  "files": ["index.js", "libs", "utils", "assets"],
+  "files": ["index.js", "libs"],
   "scripts": {
     "dev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
