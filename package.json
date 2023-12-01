@@ -1,12 +1,15 @@
 {
-  "name": "cchex",
+  "name": "@marujah/cchex",
   "version": "1.0.0",
   "description": "create chrome extension CLI is a tool of creating a boilerplate for a simple chrome extension.",
   "main": "index.js",
   "bin": {
     "cchex": "index.js"
   },
-  "files": ["index.js", "libs"],
+  "files": [
+    "index.js",
+    "libs"
+  ],
   "scripts": {
     "dev": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,11 +23,7 @@
     "Extension",
     "CLI"
   ],
-  "author": {
-    "name": "Marouen Mhiri",
-    "email": "mail@marouen-mhiri.com",
-    "url": "http://marouen-mhiri.com/"
-  },
+  "author": "Marouen Mhiri <mail@marouen-mhiri.com> (http://marouen-mhiri.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Marujah/create-chrome-extension/issues"
@@ -46,5 +45,6 @@
     "simple-git": "^3.5.0",
     "touch": "^3.1.0",
     "yargs": "^17.4.0"
-  }
+  },
+  "devDependencies": {}
 }
