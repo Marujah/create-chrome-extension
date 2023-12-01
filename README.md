@@ -9,8 +9,12 @@ This Create Chrome extension (CCHEX) allows users to generate a minimalistic chr
 
 ## Installation
 
-1. npm i -g cchex
-2. cchex
+- npm i -g @marujah/cchex
+- cchex
+
+OR just:
+
+- npx @marujah/cchex
 
 ## Installation in chrome browser
 
